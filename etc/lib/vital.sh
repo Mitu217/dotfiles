@@ -26,6 +26,7 @@ os_detect() {
         *'linux'*)  PLATFORM='linux'   ;;
         *'darwin'*) PLATFORM='osx'     ;;
         *'bsd'*)    PLATFORM='bsd'     ;;
+        *'mingw'*)  PLATFORM='windows' ;;
         *)          PLATFORM='unknown' ;;
     esac
 }
@@ -61,10 +62,19 @@ is_bsd() {
     fi
 }
 
+is_windows() {
+    os_detect
+    if [ "$PLATFORM" = "windows" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 # get_os returns OS name of the platform that is running
 get_os() {
     local os
-    for os in osx linux bsd; do
+    for os in osx linux bsd windows; do
         if is_$os; then
             echo $os
         fi
