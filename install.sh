@@ -43,3 +43,5 @@ DOTPATH=${DOTFILE_DIR} bash ${DOTFILE_DIR}/etc/init/init.sh
 echo ''
 echo $(tput setaf 2)initialize complete!. ✔︎$(tput sgr0)
 echo ''
+
+read -p "press any key to exit..."
